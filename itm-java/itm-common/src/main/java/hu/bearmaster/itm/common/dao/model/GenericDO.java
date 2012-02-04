@@ -1,8 +1,12 @@
 package hu.bearmaster.itm.common.dao.model;
 
+import hu.bearmaster.itm.common.validators.TimestampUpdateListener;
+import hu.bearmaster.itm.common.validators.TimestampedEntity;
+
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,7 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @MappedSuperclass
-public abstract class GenericDO<ID> implements java.io.Serializable {
+@EntityListeners({TimestampUpdateListener.class})
+public abstract class GenericDO<ID> implements java.io.Serializable, TimestampedEntity {
    
    private static final long serialVersionUID = -7709984498689739891L;
    

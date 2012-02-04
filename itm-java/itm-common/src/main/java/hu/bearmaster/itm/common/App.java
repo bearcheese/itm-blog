@@ -17,7 +17,7 @@ public class App {
       EntityManager em = emf.createEntityManager();
 
       try {
-         UserDO newUser = new UserDO("java-őű-teszt", "majom@bananfa.cc", "talald_ki", "sok_so", false);
+         UserDO newUser = new UserDO("timestamp", "majom-ido@bananfa.cc", "talald_ki", "megtobbso", false);
          em.getTransaction().begin();
          em.persist(newUser);         
          em.getTransaction().commit();
