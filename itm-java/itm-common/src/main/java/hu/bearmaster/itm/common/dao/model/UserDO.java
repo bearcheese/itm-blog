@@ -2,12 +2,17 @@ package hu.bearmaster.itm.common.dao.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Entity
 @Table(name = "users")
+@NamedQueries({
+   @NamedQuery(name = "findByUsername", query = "select u from UserDO u where u.name = :name")
+})
 public class UserDO extends GenericDO<Long> {
    
    private static final long serialVersionUID = -1124453248446942086L;
