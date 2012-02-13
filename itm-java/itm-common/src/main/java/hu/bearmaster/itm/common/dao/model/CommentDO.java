@@ -1,5 +1,7 @@
 package hu.bearmaster.itm.common.dao.model;
 
+import hu.bearmaster.itm.common.model.CommentVO;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -10,7 +12,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Entity
 @Table(name = "comments")
-public class CommentDO extends GenericDO<Long> {
+public class CommentDO extends GenericDO<Long, CommentVO> {
 
    private static final long serialVersionUID = -3201547867025559326L;
 
@@ -66,5 +68,17 @@ public class CommentDO extends GenericDO<Long> {
             .append("post", (post != null ? post.getId() : null))
             .append("content", content);
       return builder.toString();
-   }   
+   }
+
+   @Override
+   public CommentVO getVo() {
+      // TODO Auto-generated method stub
+      throw new UnsupportedOperationException("Not implemented yet!");
+   }
+
+   @Override
+   public void setVo(CommentVO vo) {
+      // TODO Auto-generated method stub
+      throw new UnsupportedOperationException("Not implemented yet!");
+   }
 }

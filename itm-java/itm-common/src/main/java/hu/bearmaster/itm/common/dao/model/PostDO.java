@@ -1,5 +1,7 @@
 package hu.bearmaster.itm.common.dao.model;
 
+import hu.bearmaster.itm.common.model.PostVO;
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,12 +15,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.transaction.NotSupportedException;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Entity
 @Table(name = "posts")
-public class PostDO extends GenericDO<Long> {
+public class PostDO extends GenericDO<Long, PostVO> {
 
    private static final long serialVersionUID = -1302251252265949756L;
 
@@ -159,5 +162,15 @@ public class PostDO extends GenericDO<Long> {
             .append("authorId", (author != null ? author.getId() : null))
             .append("category", category);
       return builder.toString();
+   }
+
+   @Override
+   public PostVO getVo() {
+      throw new UnsupportedOperationException("Not implemented yet!");
+   }
+
+   @Override
+   public void setVo(PostVO vo) {
+      throw new UnsupportedOperationException("Not implemented yet!");      
    }
 }

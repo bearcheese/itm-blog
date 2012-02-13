@@ -1,5 +1,7 @@
 package hu.bearmaster.itm.common.dao.model;
 
+import hu.bearmaster.itm.common.model.ContactMessagesVO;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,7 +11,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Entity
 @Table(name = "contact_messages")
-public class ContactMessageDO extends GenericDO<Long> {
+public class ContactMessageDO extends GenericDO<Long, ContactMessagesVO> {
 
    private static final long serialVersionUID = 3514559176559223816L;
 
@@ -80,4 +82,15 @@ public class ContactMessageDO extends GenericDO<Long> {
       return builder.toString();
    }
 
+   @Override
+   public ContactMessagesVO getVo() {
+      // TODO Auto-generated method stub
+      throw new UnsupportedOperationException("Not implemented yet!");
+   }
+
+   @Override
+   public void setVo(ContactMessagesVO vo) {
+      // TODO Auto-generated method stub
+      throw new UnsupportedOperationException("Not implemented yet!");
+   }
 }

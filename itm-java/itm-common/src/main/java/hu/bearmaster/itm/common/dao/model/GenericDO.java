@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @MappedSuperclass
 @EntityListeners({TimestampUpdateListener.class})
-public abstract class GenericDO<ID> implements java.io.Serializable, TimestampedEntity {
+public abstract class GenericDO<ID, VO> implements java.io.Serializable, TimestampedEntity {
    
    private static final long serialVersionUID = -7709984498689739891L;
    
@@ -56,5 +56,9 @@ public abstract class GenericDO<ID> implements java.io.Serializable, Timestamped
    public void setUpdatedAt(Date updatedAt) {
       this.updatedAt = updatedAt;
    }
+   
+   public abstract VO getVo();
+   
+   public abstract void setVo(VO vo);
 
 }

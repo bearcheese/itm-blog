@@ -1,5 +1,7 @@
 package hu.bearmaster.itm.common.dao.model;
 
+import hu.bearmaster.itm.common.model.UserVO;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
@@ -13,7 +15,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @NamedQueries({
    @NamedQuery(name = "findByUsername", query = "select u from UserDO u where u.name = :name")
 })
-public class UserDO extends GenericDO<Long> {
+public class UserDO extends GenericDO<Long, UserVO> {
    
    private static final long serialVersionUID = -1124453248446942086L;
 
@@ -29,8 +31,6 @@ public class UserDO extends GenericDO<Long> {
    private String salt;
    
    private boolean admin;
-   
-   //...
    
    public UserDO() {
    }
@@ -89,6 +89,24 @@ public class UserDO extends GenericDO<Long> {
       builder.append("id", getId()).append("name", name)
              .append("email", email).append("admin", admin);
       return builder.toString();
+   }
+
+   @Override
+   public UserVO getVo() {
+      UserVO vo = new UserVO();
+      vo.setId(this.getId());
+      vo.setName(this.name);
+      vo.setEmail(this.getEmail());
+      vo.setAdmin(this.admin);
+      return vo;
+   }
+
+   @Override
+   public void setVo(UserVO vo) {
+      this.setId(vo.getId());
+      this.setName(vo.getName());
+      this.setEmail(vo.getEmail());
+      this.setAdmin(vo.isAdmin());
    }
    
 }
