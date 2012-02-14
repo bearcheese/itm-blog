@@ -13,18 +13,5 @@
       <class>hu.bearmaster.itm.common.dao.model.ContactMessageDO</class>
       <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
-      <properties>
-         <property name="hibernate.connection.useUnicode" value="true" />
-         <property name="hibernate.connection.characterEncoding" value="UTF-8" />
-
-         <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/itm_java" />
-         <property name="hibernate.connection.user" value="root" />
-         <property name="hibernate.connection.password" value="mysql" />
-         <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-         <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-         <property name="hibernate.show_sql" value="true" />
-         <property name="hibernate.format_sql" value="true" />
-
-      </properties>
    </persistence-unit>
 </persistence>
