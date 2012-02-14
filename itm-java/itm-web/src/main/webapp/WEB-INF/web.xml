@@ -1,7 +1,75 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="java.sun.com/xml/ns/javaee" xmlns:web="java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+   xmlns:xsi="w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="java.sun.com/xml/ns/javaee java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+   id="ITM-WEBAPP" version="3.0">
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+   <context-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>
+         /WEB-INF/itm-servlet.xml
+         classpath:itm-security.xml         
+      </param-value>
+   </context-param>
+
+   <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener
+      </listener-class>
+   </listener>
+
+
+   <filter>
+      <filter-name>characterEncodingFilter</filter-name>
+      <filter-class>org.springframework.web.filter.CharacterEncodingFilter
+      </filter-class>
+      <init-param>
+         <param-name>encoding</param-name>
+         <param-value>UTF-8</param-value>
+      </init-param>
+      <init-param>
+         <param-name>forceEncoding</param-name>
+         <param-value>true</param-value>
+      </init-param>
+   </filter>
+
+   <filter-mapping>
+      <filter-name>characterEncodingFilter</filter-name>
+      <url-pattern>/*</url-pattern>
+   </filter-mapping>
+
+   <filter>
+      <filter-name>springSecurityFilterChain</filter-name>
+      <filter-class>org.springframework.web.filter.DelegatingFilterProxy
+      </filter-class>
+   </filter>
+
+   <filter-mapping>
+      <filter-name>springSecurityFilterChain</filter-name>
+      <url-pattern>/*</url-pattern>
+   </filter-mapping>
+
+   <filter>
+      <filter-name>httpMethodFilter</filter-name>
+      <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter
+      </filter-class>
+   </filter>
+
+   <filter-mapping>
+      <filter-name>httpMethodFilter</filter-name>
+      <servlet-name>itm</servlet-name>
+   </filter-mapping>
+
+
+   <display-name>Itm java - web project</display-name>
+   <servlet>
+      <servlet-name>itm</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet
+      </servlet-class>
+      <load-on-startup>1</load-on-startup>
+   </servlet>
+
+   <servlet-mapping>
+      <servlet-name>itm</servlet-name>
+      <url-pattern>/</url-pattern>
+   </servlet-mapping>
 </web-app>

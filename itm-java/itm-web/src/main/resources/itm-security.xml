@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+   xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+   <http>
+      <intercept-url pattern="/users/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+      <intercept-url pattern="/j_spring_security_check" access="IS_AUTHENTICATED_ANONYMOUSLY" />      
+      <intercept-url pattern="/**" access="ROLE_USER" />
+      <form-login login-page="/users/login"
+         default-target-url="/users" username-parameter="name" password-parameter="password"/>
+      <logout />
+      <port-mappings>
+         <port-mapping http="8080" https="8443" />
+      </port-mappings>
+   </http>
+   
+   <authentication-manager>
+      <authentication-provider ref="myAuthenticationService" />
+   </authentication-manager>
+
+   <beans:bean id="myAuthenticationService" class="hu.bearmaster.itm.web.providers.UserAuthenticationProvider">
+      <beans:property name="userService" ref="userService"></beans:property>
+   </beans:bean>
+
+</beans:beans>
