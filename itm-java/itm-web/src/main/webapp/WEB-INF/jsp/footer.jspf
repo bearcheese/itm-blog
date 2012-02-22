@@ -1,2 +1,90 @@
-</body>
+         </div> <!-- Closing content div -->
+            <div id="sidebar">
+              <ul>
+                <li>
+                  <div id="search" >
+                    <form accept-charset="UTF-8" action="/search/index" method="get">
+                      <div>
+                        <input id="search-text" name="search" type="text" />
+                        <input id="search-submit" type="submit" value="Keres" />
+                      </div>
+                     </form>
+                  </div>
+                  <div style="clear: both;">&nbsp;</div>
+                </li>
+                <li>
+                  <p id="alert"></p>
+                  <div id="login-box">
+                    <form accept-charset="UTF-8" action="/login" method="post">
+							  <input id="redirect_to" name="redirect_to" type="hidden" value="/" />
+							
+							  <fieldset>
+							    <legend>Bejelentkezés</legend>
+							
+							    <div>
+							      <label for="name">Név:</label>
+							      <input id="name" name="name" type="text" />
+							    </div>
+							
+							    <div>
+							
+							      <label for="password">Jelszó:</label>
+							      <input id="password" name="password" type="password" />
+							    </div>
+							
+							    <div class="actions">
+							      <input id="login-btn" name="commit" type="submit" value="Lépj be" /> vagy <a href="/register">regisztrálj!</a>
+							    </div>
+							
+							  </fieldset>
+							</form>
+                  </div>
+                </li>
+                <li id="calendar">
+                </li>
+                <li>
+                  <h2>Kategóriák</h2>
+                  <ul>
+                    <li>Category1</li>
+                    <li>Category2</li>
+                    <li>Category3</li>
+                    <li>Category4</li>
+                  </ul>
+                </li>
+                <li>
+                  <h2>Hasznos linkek</h2>
+                  <ul>
+                    <li><a href="http://itmenedzsment.blogspot.com/">Blog</a></li>
+                    <li><a href="http://itmenedzsment.pbworks.com/">Wiki oldal</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <!-- end #sidebar -->
+            <div style="clear: both;">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <!-- end #page -->
+    </div>
+    <div id="footer">
+      <p>Copyright (c) 2011 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+      <a href="http://feedvalidator.org/check.cgi?url=http://snowqueen.herokuapp.com/feed/rss.xml">
+        <img alt="[Valid RSS]" src="<c:url value="/assets/valid-rss-rogers.png"/>" title="Validate my RSS feed" />
+      </a>
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Érvényes CSS!" />
+    </a>
+
+    </div>
+    <!-- end #footer -->
+    <script type="text/javascript" >
+      $(document).ready(function () {
+        $("#calendar").html("<applet code = 'CalendarApplet' archive = '/itm-calendar.jar' width = '276' />");
+      });
+    </script>
+  </body>
 </html>

@@ -1,0 +1,131 @@
+form.new_user, form.new_contact_message {
+    background:#fff;
+    padding:1em;
+    /*border:1px solid #eee;*/
+    margin:1em auto;
+    width:35em;
+    color: black;
+    line-height:20px;
+}
+.new_user .register {
+    background:url(user.gif) no-repeat 95% 1em;
+}
+
+fieldset div {
+    margin:4px 0;
+    /*clear:both;*/
+}
+
+label {
+    float:left;
+    width:100px;
+    text-align:right;
+    margin-right:1em;
+}
+legend {
+    color: #023848;
+    font-size:1.2em;
+}
+legend span {
+    width:10em;
+    text-align:right;
+}
+input {
+    padding:0.15em;
+    border:1px solid #ddd;
+    background:#fafafa;
+    font:bold 1em arial, sans-serif;
+    /*-moz-border-radius:4px;
+    -khtml-border-radius:4px;*/
+    border-radius:4px;
+}
+
+.field input {
+    width:200px;
+}
+
+input:hover, .new_user input:focus {
+    border-color:#c5c5c5;
+    background:#f6f6f6;
+}
+fieldset {
+    border:1px solid #ddd;
+    padding:6px;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+
+.new_user input.default {
+    color:#bbb;
+}
+
+#register-btn {
+    margin-left: 115px;
+    width:200px;
+}
+
+#login-box {
+    margin-bottom: 35px;
+}
+
+#login-box label {
+    width: 70px;
+}
+
+#login-box input {
+    width: 160px;
+}
+
+#login-btn {
+    width: 90px !important;
+}
+
+#logout-btn {
+    width: auto !important;
+    padding: 2px 14px;
+}
+#user-info {
+    margin-bottom: 20px;
+}
+
+#user-info img {
+    float:left;
+
+}
+
+#user-name {
+    height: 44px;
+    padding-top: 20px;
+    padding-left: 84px;
+    font-size: 200%;
+}
+
+#login-form {
+    background:#fff;
+    padding:1em;
+    margin:1em auto;
+    width:35em;
+    color: black;
+    line-height:20px;
+}
+
+.welcome-text {
+    padding-left: 10px;
+}
+
+/*
+input[type=checkbox], input[type=radio] { visibility: hidden; width:0; height:0; padding:0; margin:0; }
+input[type=checkbox] + label, input[type=radio] + label { padding-left:18px; }
+input[type=checkbox] + label{ background: url(../gfx/check_radio.png) 0 0 no-repeat; }
+input[type=checkbox]:focus + label{ background-position: 0 -16px; }
+input[type=checkbox] + label:hover{ background-position: 0 -32px; }
+input[type=checkbox]:checked + label{ background-position: 0 -48px; }
+
+input[type=radio] + label{ background: url(../gfx/check_radio.png) 0 -64px no-repeat; }
+input[type=radio]:focus + label{ background-position: 0 -80px; }
+input[type=radio] + label:hover{ background-position: 0 -96px; }
+input[type=radio]:checked + label{ background-position: 0 -112px; }
+*/

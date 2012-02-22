@@ -1,0 +1,45 @@
+.comment-list h4 {
+    background-color: #F6F6F6;
+    padding: 4px 5px;
+}
+
+.comment-list h4 span.comment-author {
+    color: #023848;
+}
+
+.comment-list h4 span.comment-time {
+    font-weight: normal;
+    margin-left: 50px;
+    float: right;
+}
+
+.comment-list li {
+    padding-bottom: 10px;
+    /*border-bottom: 1px solid gray;*/
+}
+
+li form.comment_input {
+    padding-left: 0px;
+}
+
+.comment-body {
+    margin-bottom: 10px;
+}
+
+.comment-footer {
+    float:right;
+}
+
+.comment_input {
+    padding-left: 40px;
+}
+
+.comment-modified {
+    font-size: 75%;
+}
+
+#comment_content {
+    width: 535px;
+    height: 10em;
+    vertical-align: baseline; /*A számozás legyen jó helyen*/
+}

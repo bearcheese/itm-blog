@@ -24,7 +24,9 @@
 
    <!-- Use @Controller annotations for MVC controller definitions -->
    <mvc:annotation-driven />
-
+   
+   <mvc:resources location="/css/,/images/" mapping="/assets/**"/>
+   
    <!-- View resolver -->
    <bean id="viewResolver"
       class="org.springframework.web.servlet.view.InternalResourceViewResolver">
