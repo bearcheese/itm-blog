@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page session="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+              
+
+<form:form acceptCharset="UTF-8" cssClass="new_user" id="new_user" commandName="user" action="/itm-web/users">
+<%--form accept-charset="UTF-8" action="/itm-web/users" class="new_user" id="new_user" method="post" --%>
+
+
+<fieldset class="register">
+  <div class="field">
+    <label for="user_name">Név</label>
+    <form:input path="name" size="30" value="${ user.name }"/><form:errors path="name" />
+  </div>
+  <div class="field">
+    <label for="user_email">Email</label>
+	<form:input path="email" size="30" type="email" value="${ user.email }"/><form:errors path="email" />
+  </div>
+  <div class="field">
+    <label for="user_password">Jelszó</label>
+    <form:password path="password" size="30" /><form:errors path="password" />
+  </div>
+  <div class="field">
+    <label for="user_password_confirmation">Jelszó újra</label>
+	<form:password path="passwordConfirmation" size="30" /><form:errors path="" />
+  </div>
+    <div class="field">
+      <label for="user_admin">Admin</label>
+      <form:checkbox path="admin"/>
+    </div>
+
+  <div class="actions">
+    <input id="register-btn" name="commit" type="submit" value="Regisztráció" />
+  </div>
+  </fieldset>
+<%-- /form--%>
+</form:form>
+
