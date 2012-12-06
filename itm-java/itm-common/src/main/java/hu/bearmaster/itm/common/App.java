@@ -17,9 +17,9 @@ public class App {
       UserService userService = (UserService) context.getBean("userService");
       
       UserVO newUser = new UserVO();
-      newUser.setName("testpwuser");
+      newUser.setName("testnewpwuser");
       newUser.setPassword("majom");
-      newUser.setEmail("test@password.com");
+      newUser.setEmail("test@newpassword.com");
       
       try {
          

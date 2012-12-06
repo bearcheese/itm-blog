@@ -1,8 +1,5 @@
 package hu.bearmaster.itm.common.services.impl;
 
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -11,6 +8,7 @@ import javax.persistence.NoResultException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 
 import hu.bearmaster.itm.common.dao.UserDao;
 import hu.bearmaster.itm.common.dao.model.UserDO;
@@ -22,8 +20,20 @@ import hu.bearmaster.itm.common.services.UserService;
 public class UserServiceImpl implements UserService {
 
    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+   private static final String DEFAULT_SECRET = "To0+M4ny@Secr3ts!";
+   
+   
+   private StandardPasswordEncoder passwordEncoder;
 
    private UserDao userDao;
+   
+   public UserServiceImpl() {
+      this.passwordEncoder = new StandardPasswordEncoder(DEFAULT_SECRET); 
+   }
+   
+   public UserServiceImpl(String secret) {
+      this.passwordEncoder = new StandardPasswordEncoder(secret); 
+   }
 
    public void setUserDao(UserDao dao) {
       this.userDao = dao;
@@ -60,46 +70,22 @@ public class UserServiceImpl implements UserService {
          userDo.setVo(user);
 
          String salt = generateSalt(userDo);
-         String hashedPassword = generateHashedPassword(user.getPassword(), salt);
+         String hashedPassword = passwordEncoder.encode(user.getPassword() + salt); //if we have already salt lets use it, even if Spring salts the password as well
          user.setPassword("");
+         user.setPasswordConfirmation("");
          userDo.setHashedPassword(hashedPassword);
          userDo.setSalt(salt);
 
          return userDao.create(userDo).getVo();
-      } catch (NoSuchAlgorithmException e) {
-         logger.error("SHA-256 digest algorith is not available!", e);
-         throw new ItmException(ErrorCode.USER_REGISTRATION_FAILED, "Can't register user: " + user, e);
-      } catch (UnsupportedEncodingException e) {
-         logger.error("UTF-8 is not supported encoding!", e);
-         throw new ItmException(ErrorCode.USER_REGISTRATION_FAILED, "Can't register user: " + user, e);
-      } catch (Exception e) {
+         
+      } catch (Exception e) { //TODO Distinguish between different failure reasons (username or email address already exists or other)
          logger.warn("Can't register user: {}", user, e);
          throw new ItmException(ErrorCode.USER_REGISTRATION_FAILED, "Can't register user: " + user, e);
       }
    }
 
    private String generateSalt(UserDO userDo) {
-      return String.valueOf(userDo.hashCode()) + Long.toHexString(new Random(System.currentTimeMillis()).nextLong());
-   }
-
-   private String generateHashedPassword(String cleanText, String salt)
-         throws NoSuchAlgorithmException, UnsupportedEncodingException {
-
-      String inputString = cleanText + "Pr4tty_W0m@n" + salt; // TODO refactor secret element of hash
-
-      logger.debug("Input string: '{}'", inputString);
-
-      MessageDigest md = MessageDigest.getInstance("SHA-256");
-
-      byte[] hash = md.digest(inputString.getBytes("UTF-8"));
-
-      StringBuilder sb = new StringBuilder();
-      for (byte b : hash) {
-         sb.append(String.format("%02x", b));
-      }
-
-      return sb.toString();
-
+      return Integer.toHexString(userDo.hashCode()) + Long.toHexString(new Random(System.currentTimeMillis()).nextLong());
    }
 
    @Override
@@ -107,26 +93,17 @@ public class UserServiceImpl implements UserService {
       
       try {
          UserDO userDo = userDao.findByUsername(username);
-         String hashedPassword = generateHashedPassword(password,
-               userDo.getSalt());
 
-         logger.debug("Calculated hashed password: '{}'", hashedPassword);
-
-         if (hashedPassword.equals(userDo.getHashedPassword())) {
+         if (passwordEncoder.matches(password + userDo.getSalt(), userDo.getHashedPassword())) {
+                        
             return userDo.getVo();
          } // else the authentication failed, exception will be raised at the
            // end of this method
-      } catch (NoSuchAlgorithmException e) {
-         logger.error("SHA-256 digest algorit is not available!", e);
-         throw new ItmException(ErrorCode.USER_AUTHENTICATION_FAILED, "Can't authenticate user: " + username, e);
-      } catch (UnsupportedEncodingException e) {
-         logger.error("UTF-8 is not supported encoding!", e);
-         throw new ItmException(ErrorCode.USER_AUTHENTICATION_FAILED, "Can't authenticate user: " + username, e);
       } catch (NoResultException e) {
+         logger.info("No user found with name {}", username);
          throw new ItmException(ErrorCode.USER_AUTHENTICATION_FAILED, "Can't authenticate user: " + username, e);
       }
 
-      throw new ItmException(ErrorCode.USER_AUTHENTICATION_FAILED,
-            "Can't authenticate user: " + username);
+      throw new ItmException(ErrorCode.USER_AUTHENTICATION_FAILED, "Can't authenticate user: " + username);
    }
 }

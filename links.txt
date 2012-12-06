@@ -1,0 +1,1 @@
+http://blog.codecentric.de/en/2012/07/spring-security-two-security-realms-in-one-application/

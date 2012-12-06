@@ -14,6 +14,7 @@
    <url>http://maven.apache.org</url>
    <properties>
       <spring.version>3.1.0.RELEASE</spring.version>
+      <spring-security.version>3.1.0.RELEASE</spring-security.version>
    </properties>
 
    <dependencies>
@@ -83,6 +84,11 @@
          <version>${spring.version}</version>
       </dependency>
       <dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-core</artifactId>
+         <version>${spring-security.version}</version>
+      </dependency>
+      <dependency>
          <groupId>javax.validation</groupId>
          <artifactId>validation-api</artifactId>
          <version>1.0.0.GA</version>
@@ -103,42 +109,15 @@
    </dependencies>
    <build>
       <plugins>
-         <!--plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>hibernate3-maven-plugin</artifactId>
-            <version>2.2</version>
-            <configuration>
-               <components>
-                  <component>
-                     <name>hbm2ddl</name>
-                     <implementation>jpaconfiguration</implementation>
-                  </component>
-               </components>
-               <componentProperties>
-                  <drop>true</drop>
-                  <create>true</create>
-                  <export>false</export>
-                  <format>true</format>
-                  <outputfilename>schema.ddl</outputfilename>
-                  <persistenceunit>itm-persistence</persistenceunit>
-               </componentProperties>
-            </configuration>
-            <executions>
-               <execution>
-                  <phase>process-classes</phase>
-                  <goals>
-                     <goal>hbm2ddl</goal>
-                  </goals>
-               </execution>
-            </executions>
-            <dependencies>
-               <dependency>
-                  <groupId>mysql</groupId>
-                  <artifactId>mysql-connector-java</artifactId>
-                  <version>5.1.18</version>
-               </dependency>
-            </dependencies>
-         </plugin-->
+         <!--plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>hibernate3-maven-plugin</artifactId> 
+            <version>2.2</version> <configuration> <components> <component> <name>hbm2ddl</name> 
+            <implementation>jpaconfiguration</implementation> </component> </components> 
+            <componentProperties> <drop>true</drop> <create>true</create> <export>false</export> 
+            <format>true</format> <outputfilename>schema.ddl</outputfilename> <persistenceunit>itm-persistence</persistenceunit> 
+            </componentProperties> </configuration> <executions> <execution> <phase>process-classes</phase> 
+            <goals> <goal>hbm2ddl</goal> </goals> </execution> </executions> <dependencies> 
+            <dependency> <groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> 
+            <version>5.1.18</version> </dependency> </dependencies> </plugin -->
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-resources-plugin</artifactId>

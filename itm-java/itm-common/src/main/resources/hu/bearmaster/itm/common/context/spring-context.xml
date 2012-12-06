@@ -46,6 +46,7 @@
    <bean id="userDao" class="hu.bearmaster.itm.common.dao.impl.UserDaoImpl" />
    
    <bean id="userService" class="hu.bearmaster.itm.common.services.impl.UserServiceImpl" >
+      <constructor-arg type="java.lang.String" value="Pr3tty_Wom@n!" />
       <property name="userDao" ref="userDao" />
    </bean>
     

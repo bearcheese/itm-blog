@@ -16,6 +16,10 @@
       <listener-class>org.springframework.web.context.ContextLoaderListener
       </listener-class>
    </listener>
+   
+   <listener>
+    <listener-class>hu.bearmaster.itm.web.util.JdbcListener</listener-class>
+   </listener>
 
 
    <filter>
