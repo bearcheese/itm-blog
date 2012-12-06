@@ -1,0 +1,20 @@
+@IMPORT url("comments.css");
+@IMPORT url("posts.css");
+@IMPORT url("users.css");
+@IMPORT url("theme.css");
+
+/* Contact messages */
+
+fieldset.contact {
+    background:url(contact.gif) no-repeat 95% 1em;
+}
+
+#contact_message_message {
+    margin-left: 112px;
+
+}
+
+#contact-btn {
+    margin-left: 115px;
+    width:200px;
+}
