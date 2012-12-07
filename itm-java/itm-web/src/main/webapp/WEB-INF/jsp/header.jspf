@@ -9,7 +9,7 @@
     <meta name="author" content="BearMaster Corp" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     
-    <link type="text/css" rel="stylesheet" media="screen" href="<c:url value="/assets/application.css" />">
+    <link type="text/css" rel="stylesheet" media="screen" href="<c:url value="/assets/css/application.css" />">
     
     <title>ITM Java - Web project</title>
   </head>

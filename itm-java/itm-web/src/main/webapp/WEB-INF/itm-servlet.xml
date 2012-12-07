@@ -46,5 +46,9 @@
 	<bean id="userController" class="hu.bearmaster.itm.web.controllers.UserController">
 		<property name="userService" ref="userService" />
 	</bean>
+   
+   <mvc:resources location="/css/" mapping="/assets/css/**" />
+   <mvc:resources location="/images/" mapping="/assets/images/**" />
+   <mvc:resources location="/javascript/" mapping="/assets/javascript/**" />
 
 </beans>

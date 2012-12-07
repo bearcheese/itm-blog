@@ -7,11 +7,9 @@
            http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
    <http>
-      <intercept-url pattern="/users/login*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-      <intercept-url pattern="/j_spring_security_check" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-      <intercept-url pattern="/**" access="ROLE_USER" />      
+      <intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />      
       <form-login login-page="/users/login"
-         default-target-url="/users" username-parameter="name" password-parameter="password"/>
+         default-target-url="/" username-parameter="name" password-parameter="password"/>
       <logout />
       <port-mappings>
          <port-mapping http="8080" https="8443" />

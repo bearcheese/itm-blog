@@ -7,7 +7,7 @@
 
 <jsp:directive.include file="/WEB-INF/jsp/header.jspf" />
 
-<h1>Editing user</h1>
+<h1>Register user</h1>
 
 <jsp:directive.include file="_form.jspf" />
 
