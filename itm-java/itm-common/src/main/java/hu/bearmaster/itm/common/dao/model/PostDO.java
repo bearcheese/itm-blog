@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.transaction.NotSupportedException;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 

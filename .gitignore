@@ -3,4 +3,4 @@
 *.log
 !.gitignore
 **/*/target
-
+**/*/test-output
