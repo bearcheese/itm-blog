@@ -13,6 +13,7 @@ public class ItmException extends Exception {
       USER_PASSWORD_NOT_COMPLEX,
       USER_REGISTRATION_FAILED,
       USER_AUTHENTICATION_FAILED,
+      USER_NOT_FOUND,
       UNKNOWN
    }
 
@@ -29,6 +30,10 @@ public class ItmException extends Exception {
    public ItmException(ErrorCode errorCode, String message, Throwable cause) {
       super(message, cause);
       this.errorCode = errorCode;
+   }
+   
+   public ErrorCode getErrorCode() {
+	   return errorCode;
    }
 
    public String toString() {

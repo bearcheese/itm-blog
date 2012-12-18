@@ -30,13 +30,21 @@ public class UserServiceImpl implements UserService {
    }
 
    @Override
-   public UserVO getUser(String username) {
-      return userDao.findByUsername(username).getVo();
+   public UserVO getUser(String username) throws ItmException {
+      try {
+		return userDao.findByUsername(username).getVo();
+	} catch (Exception e) {		
+		throw new ItmException(ErrorCode.USER_NOT_FOUND, "User not found with name " + username, e);
+	}
    }
 
    @Override
-   public UserVO getUser(Long id) {
-      return userDao.find(id).getVo();
+   public UserVO getUser(Long id) throws ItmException {
+      try {
+		return userDao.find(id).getVo();
+	} catch (Exception e) {
+		throw new ItmException(ErrorCode.USER_NOT_FOUND, "User not found with id " + id, e);
+	}
    }
 
    @Override
@@ -97,7 +105,7 @@ public class UserServiceImpl implements UserService {
       for (byte b : hash) {
          sb.append(String.format("%02x", b));
       }
-
+      logger.debug("Output hash: '{}'", sb.toString());
       return sb.toString();
 
    }

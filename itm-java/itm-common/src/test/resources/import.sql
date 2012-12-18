@@ -1,1 +1,3 @@
 INSERT INTO users (name, email, hashed_password, salt, admin, created_at, updated_at) VALUES ('Test Elek', 'test.elek@itm-blog.hu', 'dummy', 'salt', B'0', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO users (name, email, hashed_password, salt, admin, created_at, updated_at) VALUES ('Johnny English', 'johnny.english@itm-blog.hu', 'no_fear', 'no_salt', B'0', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO users (name, email, hashed_password, salt, admin, created_at, updated_at) VALUES ('Registered user', 'regtest@itm-blog.hu', 'e4df1beb76e47757dd45b2dd6c4f11f9808b87683c7f6990f12e8ea8da720a87', '5813461406d49b20b488cc6', B'0', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

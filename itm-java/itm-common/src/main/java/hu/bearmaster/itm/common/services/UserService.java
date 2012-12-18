@@ -10,9 +10,9 @@ import hu.bearmaster.itm.common.model.UserVO;
 
 public interface UserService {
    
-   UserVO getUser(String username);
+   UserVO getUser(String username) throws ItmException;
    
-   UserVO getUser(Long id);
+   UserVO getUser(Long id) throws ItmException;
    
    List<UserVO> listUsers();
    
