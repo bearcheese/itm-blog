@@ -9,11 +9,17 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
+/**
+ * Represents the value object of a user.
+ *
+ */
 @PasswordMatches
 public class UserVO extends GenericVO<Long> {
+   public static final int MINIMUM_USER_NAME_LENGTH = 3;
+   public static final int MAXIMUM_USER_NAME_LENGTH = 50;
    
    @NotBlank
-   @Size(min=3, max=50)
+   @Size(min = MINIMUM_USER_NAME_LENGTH, max = MAXIMUM_USER_NAME_LENGTH)
    private String name;
    
    @NotBlank
@@ -56,7 +62,7 @@ public class UserVO extends GenericVO<Long> {
       return admin;
    }
 
-   public void setAdmin(boolean admin) {
+   public void setAdmin(final boolean admin) {
       this.admin = admin;
    }
 

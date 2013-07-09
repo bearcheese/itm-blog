@@ -10,6 +10,10 @@ import javax.persistence.Table;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+/**
+ * Database entity representing the users.
+ *
+ */
 @Entity
 @Table(name = "users")
 @NamedQueries({
@@ -32,10 +36,13 @@ public class UserDO extends GenericDO<Long, UserVO> {
    
    private boolean admin;
    
+   /**
+    * Default constructor.
+    */
    public UserDO() {
    }
 
-   public UserDO(String name, String email, String hashedPassword, String salt, boolean admin) {
+   public UserDO(final String name, final String email, final String hashedPassword, final String salt, final boolean admin) {
       this.name = name;
       this.email = email;
       this.hashedPassword = hashedPassword;
@@ -47,7 +54,7 @@ public class UserDO extends GenericDO<Long, UserVO> {
       return this.name;
    }
 
-   public void setName(String name) {
+   public void setName(final String name) {
       this.name = name;
    }
 
@@ -55,7 +62,7 @@ public class UserDO extends GenericDO<Long, UserVO> {
       return this.email;
    }
 
-   public void setEmail(String email) {
+   public void setEmail(final String email) {
       this.email = email;
    }
 
@@ -63,7 +70,7 @@ public class UserDO extends GenericDO<Long, UserVO> {
       return this.hashedPassword;
    }
 
-   public void setHashedPassword(String hashedPassword) {
+   public void setHashedPassword(final String hashedPassword) {
       this.hashedPassword = hashedPassword;
    }
 
@@ -71,7 +78,7 @@ public class UserDO extends GenericDO<Long, UserVO> {
       return this.salt;
    }
 
-   public void setSalt(String salt) {
+   public void setSalt(final String salt) {
       this.salt = salt;
    }
    
@@ -79,7 +86,7 @@ public class UserDO extends GenericDO<Long, UserVO> {
       return admin;
    }
 
-   public void setAdmin(boolean admin) {
+   public void setAdmin(final boolean admin) {
       this.admin = admin;
    }
 
@@ -102,7 +109,7 @@ public class UserDO extends GenericDO<Long, UserVO> {
    }
 
    @Override
-   public void setVo(UserVO vo) {
+   public void setVo(final UserVO vo) {
       this.setId(vo.getId());
       this.setName(vo.getName());
       this.setEmail(vo.getEmail());

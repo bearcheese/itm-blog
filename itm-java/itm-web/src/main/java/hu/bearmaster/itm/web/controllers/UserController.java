@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/users")
 public class UserController {
 
-    private static final Logger logger = LoggerFactory
-            .getLogger(UserController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     private UserService userService;
 
@@ -26,7 +25,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getAllUsers(Model model) {
+    public String getAllUsers(final Model model) {
         List<UserVO> users = userService.listUsers();
         model.addAttribute("users", users);
         model.addAttribute("user", new UserVO());

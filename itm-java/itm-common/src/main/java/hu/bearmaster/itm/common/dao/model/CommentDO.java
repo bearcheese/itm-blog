@@ -30,7 +30,7 @@ public class CommentDO extends GenericDO<Long, CommentVO> {
    public CommentDO() {
    }
 
-   public CommentDO(UserDO user, PostDO post, String content) {
+   public CommentDO(final UserDO user, final PostDO post, final String content) {
       this.user = user;
       this.post = post;
       this.content = content;
@@ -40,7 +40,7 @@ public class CommentDO extends GenericDO<Long, CommentVO> {
       return this.user;
    }
 
-   public void setUser(UserDO user) {
+   public void setUser(final UserDO user) {
       this.user = user;
    }
 
@@ -48,7 +48,7 @@ public class CommentDO extends GenericDO<Long, CommentVO> {
       return this.post;
    }
 
-   public void setPost(PostDO post) {
+   public void setPost(final PostDO post) {
       this.post = post;
    }
 
@@ -56,7 +56,7 @@ public class CommentDO extends GenericDO<Long, CommentVO> {
       return this.content;
    }
 
-   public void setContent(String content) {
+   public void setContent(final String content) {
       this.content = content;
    }
    
@@ -64,8 +64,8 @@ public class CommentDO extends GenericDO<Long, CommentVO> {
    public String toString() {
       ToStringBuilder builder = new ToStringBuilder(this);
       builder.append("id", getId())
-            .append("user", (user != null ? user.getId() : null))
-            .append("post", (post != null ? post.getId() : null))
+            .append("user", user)
+            .append("post", post)
             .append("content", content);
       return builder.toString();
    }
@@ -77,7 +77,7 @@ public class CommentDO extends GenericDO<Long, CommentVO> {
    }
 
    @Override
-   public void setVo(CommentVO vo) {
+   public void setVo(final CommentVO vo) {
       // TODO Auto-generated method stub
       throw new UnsupportedOperationException("Not implemented yet!");
    }

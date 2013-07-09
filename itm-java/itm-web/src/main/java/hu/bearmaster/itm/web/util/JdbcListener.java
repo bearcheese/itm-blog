@@ -11,12 +11,16 @@ import javax.servlet.ServletContextListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Utility class, which manually deregisters JDBC driver, which prevents Tomcat 7 from complaining about memory leaks.
+ *
+ */
 public class JdbcListener implements ServletContextListener {
    
-   private static final Logger logger = LoggerFactory.getLogger(JdbcListener.class);
+   private static final Logger LOGGER = LoggerFactory.getLogger(JdbcListener.class);
 
    @Override
-   public void contextDestroyed(ServletContextEvent arg0) {
+   public void contextDestroyed(final ServletContextEvent arg0) {
       // This manually deregisters JDBC driver, which prevents Tomcat 7 from
       // complaining about memory leaks
       Enumeration<Driver> drivers = DriverManager.getDrivers();
@@ -24,15 +28,15 @@ public class JdbcListener implements ServletContextListener {
          Driver driver = drivers.nextElement();
          try {
             DriverManager.deregisterDriver(driver);
-            logger.info(String.format("Deregistering jdbc driver: %s", driver));
+            LOGGER.info(String.format("Deregistering jdbc driver: %s", driver));
          } catch (SQLException e) {
-            logger.info(String.format("Error deregistering driver %s", driver), e);
+            LOGGER.info(String.format("Error deregistering driver %s", driver), e);
          }
       }
    }
 
    @Override
-   public void contextInitialized(ServletContextEvent arg0) {
+   public void contextInitialized(final ServletContextEvent arg0) {
       // do nothing
    }
 

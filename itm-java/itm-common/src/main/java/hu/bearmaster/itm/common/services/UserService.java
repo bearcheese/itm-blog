@@ -16,7 +16,7 @@ public interface UserService {
    
    List<UserVO> listUsers();
    
-   @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {ItmException.class})
+   @Transactional(propagation = Propagation.REQUIRED, rollbackFor = { ItmException.class })
    UserVO registerUser(UserVO user) throws ItmException;
    
    UserVO authenticateUser(String username, String password) throws ItmException;

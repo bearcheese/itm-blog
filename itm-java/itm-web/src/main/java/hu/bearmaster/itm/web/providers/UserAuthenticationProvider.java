@@ -13,13 +13,16 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+/**
+ * Custom authentication provider, which manages the users via the supplied UserService implementation.
+ *
+ */
 public class UserAuthenticationProvider implements AuthenticationProvider {
    
-   private static final Logger logger = LoggerFactory.getLogger(UserAuthenticationProvider.class);
+   private static final Logger LOGGER = LoggerFactory.getLogger(UserAuthenticationProvider.class);
    
    public static final String ROLE_USER = "ROLE_USER";
    public static final String ROLE_ADMIN = "ROLE_ADMIN";
@@ -29,7 +32,11 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
    
    private UserService userService;
    
-   public UserAuthenticationProvider(UserService userService) {
+   /**
+    * Default constructor.
+    * @param userService user service implementation
+    */
+   public UserAuthenticationProvider(final UserService userService) {
       this.userService = userService;
    }
    
@@ -43,17 +50,16 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
    }
 
    @Override
-   public Authentication authenticate(Authentication authentication)
-         throws AuthenticationException {
+   public Authentication authenticate(final Authentication authentication) {
       try {
    
-         logger.info("Authenticating agains username {}", authentication.getName());
+         LOGGER.info("Authenticating agains username {}", authentication.getName());
          UserVO user = userService.authenticateUser(authentication.getName(), authentication.getCredentials().toString());
          
          List<GrantedAuthority> authorities;
          
          if (user.isAdmin()) {
-            logger.info("Granting admin privilige to {}", user.getName());
+            LOGGER.info("Granting admin privilige to {}", user.getName());
             authorities = ADMIN_AUTHS;
          } else {
             authorities = USER_AUTHS;
@@ -66,14 +72,14 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
       } catch (ItmException e) {         
          throw new BadCredentialsException("Incorrect name/password!");
       } catch (Exception e) { //Exception to catch runtime exceptions as well (like NPE)  
-         logger.error("Exception raised during user authentication!", e);
+         LOGGER.error("Exception raised during user authentication!", e);
          throw new BadCredentialsException("Incorrect name/password!");
       }
    }
 
    @Override
-   public boolean supports(Class<?> authentication) {
-      logger.debug("Authentication class={}", authentication);
+   public boolean supports(final Class<?> authentication) {
+      LOGGER.debug("Authentication class={}", authentication);
       return true;
    }
 

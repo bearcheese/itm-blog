@@ -18,6 +18,10 @@ import javax.persistence.TemporalType;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+/**
+ * Database entity representing post objects.
+ *
+ */
 @Entity
 @Table(name = "posts")
 public class PostDO extends GenericDO<Long, PostVO> {
@@ -158,7 +162,7 @@ public class PostDO extends GenericDO<Long, PostVO> {
       builder.append("id", getId()).append("title", title)
             .append("published", published).append("publishDate", publishDate)
             .append("slug", slug)
-            .append("authorId", (author != null ? author.getId() : null))
+            .append("authorId", author)
             .append("category", category);
       return builder.toString();
    }
@@ -169,7 +173,7 @@ public class PostDO extends GenericDO<Long, PostVO> {
    }
 
    @Override
-   public void setVo(PostVO vo) {
+   public void setVo(final PostVO vo) {
       throw new UnsupportedOperationException("Not implemented yet!");      
    }
 }

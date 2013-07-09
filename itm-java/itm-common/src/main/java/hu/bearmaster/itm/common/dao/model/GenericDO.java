@@ -14,8 +14,14 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * Generic superclass of all database entities.
+ *
+ * @param <ID> the type of the primary key
+ * @param <VO> the type of the value object
+ */
 @MappedSuperclass
-@EntityListeners({TimestampUpdateListener.class})
+@EntityListeners({ TimestampUpdateListener.class })
 public abstract class GenericDO<ID, VO> implements java.io.Serializable, TimestampedEntity {
    
    private static final long serialVersionUID = -7709984498689739891L;

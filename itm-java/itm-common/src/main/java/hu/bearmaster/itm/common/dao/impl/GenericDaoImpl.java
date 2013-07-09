@@ -16,7 +16,7 @@ public abstract class GenericDaoImpl<T, ID> implements GenericDao<T, ID> {
    protected static final String FIND_ALL_QUERY_TEMPLATE = "select o from %s o";
    protected static final String COUNT_ALL_QUERY_TEMPLATE = "select count(o) from %s o";
 
-   protected EntityManager em;
+   private EntityManager em;
 
    private Class<T> type;
    
@@ -28,10 +28,13 @@ public abstract class GenericDaoImpl<T, ID> implements GenericDao<T, ID> {
    }
    
    @PersistenceContext
-   public void setEntityManager(EntityManager em) {
-      this.em = em;
+   public void setEntityManager(final EntityManager entitymanager) {
+      this.em = entitymanager;
    }
 
+   /**
+    * Default constructor.
+    */
    @SuppressWarnings("unchecked")
    public GenericDaoImpl() {
       Type t = getClass().getGenericSuperclass();
@@ -40,19 +43,22 @@ public abstract class GenericDaoImpl<T, ID> implements GenericDao<T, ID> {
       initQueries();
    }
    
+   /**
+    * Initializes default queries (find all and count all) based on the actual type name.
+    */
    protected void initQueries() {
       findAllQuery = String.format(FIND_ALL_QUERY_TEMPLATE, type.getSimpleName());
       countAllQuery = String.format(COUNT_ALL_QUERY_TEMPLATE, type.getSimpleName());
    }
 
    @Override
-   public T create(T t) {
+   public T create(final T t) {
       em.persist(t);
       return t;
    }
    
    @Override
-   public T find(ID id) {
+   public T find(final ID id) {
       return em.find(type, id);
    }
    
@@ -71,12 +77,12 @@ public abstract class GenericDaoImpl<T, ID> implements GenericDao<T, ID> {
    }
 
    @Override
-   public T update(T t) {
+   public T update(final T t) {
       return em.merge(t);
    }
    
    @Override
-   public void delete(ID id) {
+   public void delete(final ID id) {
       em.remove(em.getReference(type, id));
    }
 }

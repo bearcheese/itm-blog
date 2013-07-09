@@ -19,7 +19,7 @@ import hu.bearmaster.itm.common.services.UserService;
 
 public class UserServiceImpl implements UserService {
 
-   private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+   private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
    private static final String DEFAULT_SECRET = "To0+M4ny@Secr3ts!";
    
    
@@ -31,21 +31,21 @@ public class UserServiceImpl implements UserService {
       this.passwordEncoder = new StandardPasswordEncoder(DEFAULT_SECRET); 
    }
    
-   public UserServiceImpl(String secret) {
+   public UserServiceImpl(final String secret) {
       this.passwordEncoder = new StandardPasswordEncoder(secret); 
    }
 
-   public void setUserDao(UserDao dao) {
+   public void setUserDao(final UserDao dao) {
       this.userDao = dao;
    }
 
    @Override
-   public UserVO getUser(String username) {
+   public UserVO getUser(final String username) {
       return userDao.findByUsername(username).getVo();
    }
 
    @Override
-   public UserVO getUser(Long id) {
+   public UserVO getUser(final Long id) {
       return userDao.find(id).getVo();
    }
 
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
    }
 
    @Override
-   public UserVO registerUser(UserVO user) throws ItmException {
+   public UserVO registerUser(final UserVO user) throws ItmException {
 
       try {
          UserDO userDo = new UserDO();
@@ -79,17 +79,17 @@ public class UserServiceImpl implements UserService {
          return userDao.create(userDo).getVo();
          
       } catch (Exception e) { //TODO Distinguish between different failure reasons (username or email address already exists or other)
-         logger.warn("Can't register user: {}", user, e);
+         LOGGER.warn("Can't register user: {}", user, e);
          throw new ItmException(ErrorCode.USER_REGISTRATION_FAILED, "Can't register user: " + user, e);
       }
    }
 
-   private String generateSalt(UserDO userDo) {
+   private String generateSalt(final UserDO userDo) {
       return Integer.toHexString(userDo.hashCode()) + Long.toHexString(new Random(System.currentTimeMillis()).nextLong());
    }
 
    @Override
-   public UserVO authenticateUser(String username, String password) throws ItmException {
+   public UserVO authenticateUser(final String username, final String password) throws ItmException {
       
       try {
          UserDO userDo = userDao.findByUsername(username);
@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserService {
          } // else the authentication failed, exception will be raised at the
            // end of this method
       } catch (NoResultException e) {
-         logger.info("No user found with name {}", username);
+         LOGGER.info("No user found with name {}", username);
          throw new ItmException(ErrorCode.USER_AUTHENTICATION_FAILED, "Can't authenticate user: " + username, e);
       }
 

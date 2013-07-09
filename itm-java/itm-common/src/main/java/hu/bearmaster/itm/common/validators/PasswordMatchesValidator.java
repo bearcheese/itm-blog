@@ -7,7 +7,7 @@ import javax.validation.ConstraintValidatorContext;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, UserVO>{
+public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, UserVO> {
 	
 	@Override
 	public void initialize(PasswordMatches annot) {

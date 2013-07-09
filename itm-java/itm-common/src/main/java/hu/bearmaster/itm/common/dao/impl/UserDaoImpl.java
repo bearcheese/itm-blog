@@ -9,7 +9,7 @@ public class UserDaoImpl extends GenericDaoImpl<UserDO, Long> implements UserDao
 
    @Override
    public UserDO findByUsername(String username) {
-      TypedQuery<UserDO> query = em.createNamedQuery("findByUsername", UserDO.class);
+      TypedQuery<UserDO> query = getEntityManager().createNamedQuery("findByUsername", UserDO.class);
 
       query.setParameter("name", username);
 
