@@ -12,37 +12,30 @@
    <artifactId>itm-common</artifactId>
    <name>itm-common</name>
    <url>http://maven.apache.org</url>
-   <properties>
-      <spring.version>3.2.3.RELEASE</spring.version>
-      <spring-security.version>3.2.0.M2</spring-security.version>
-   </properties>
 
    <dependencies>
       <dependency>
          <groupId>mysql</groupId>
          <artifactId>mysql-connector-java</artifactId>
-         <version>5.1.18</version>
+         <version>5.1.25</version>
       </dependency>
       <dependency>
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-entitymanager</artifactId>
-         <version>4.0.0.Final</version>
+         <version>4.2.3.Final</version>
       </dependency>
       <dependency>
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-api</artifactId>
-         <version>1.6.4</version>
-      </dependency>
+         </dependency>
       <dependency>
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-log4j12</artifactId>
-         <version>1.6.4</version>
-      </dependency>
+         </dependency>
       <dependency>
          <groupId>log4j</groupId>
          <artifactId>log4j</artifactId>
-         <version>1.2.16</version>
-      </dependency>
+         </dependency>
       <dependency>
          <groupId>org.apache.commons</groupId>
          <artifactId>commons-lang3</artifactId>
@@ -51,28 +44,23 @@
       <dependency>
          <groupId>org.springframework</groupId>
          <artifactId>spring-context</artifactId>
-         <version>${spring.version}</version>
-      </dependency>
+         </dependency>
       <dependency>
          <groupId>org.springframework</groupId>
          <artifactId>spring-context-support</artifactId>
-         <version>${spring.version}</version>
-      </dependency>
+         </dependency>
       <dependency>
          <groupId>org.springframework</groupId>
          <artifactId>spring-tx</artifactId>
-         <version>${spring.version}</version>
       </dependency>
       <dependency>
          <groupId>org.springframework</groupId>
          <artifactId>spring-orm</artifactId>
-         <version>${spring.version}</version>
-      </dependency>
+         </dependency>
       <dependency>
          <groupId>org.springframework.security</groupId>
          <artifactId>spring-security-core</artifactId>
-         <version>${spring-security.version}</version>
-      </dependency>
+         </dependency>
       <dependency>
          <groupId>javax.validation</groupId>
          <artifactId>validation-api</artifactId>
@@ -86,7 +74,6 @@
       <dependency>
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
-         <version>3.8.1</version>
          <scope>test</scope>
       </dependency>
       <!--dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-jpamodelgen</artifactId> 
@@ -128,17 +115,4 @@
          </resource>
       </resources>
    </build>
-   
-   <repositories>
-   <repository>
-	    <id>springsource-repo</id>
-	    <name>SpringSource Repository</name>
-	    <url>http://repo.springsource.org/release</url>
-	</repository>
-	<repository>
-	    <id>repository.springsource.milestone</id>
-	    <name>SpringSource Milestone Repository</name>
-	    <url>http://repo.springsource.org/milestone</url>
-	</repository>
-   </repositories>
 </project>

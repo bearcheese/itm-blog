@@ -20,7 +20,8 @@
                 <li>
                   <p id="alert"></p>
                   <div id="login-box">
-                    <form:form acceptCharset="UTF-8" id="login_user" commandName="user" action='<c:url value="j_spring_security_check" />' method="POST">
+                    <c:url value='/j_spring_security_check' var="login_url"/>
+                    <form:form acceptCharset="UTF-8" id="login_user" commandName="user" action="${login_url}" method="POST">
 							  							
 							  <fieldset>
 							    <legend>Bejelentkezés</legend>
