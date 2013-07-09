@@ -7,8 +7,8 @@
    <artifactId>itm-java</artifactId>
    <version>0.0.1-SNAPSHOT</version>
    <packaging>pom</packaging>
-   <name>ITM java verzió - fő projekt</name>
-   <description>Egy egyszerű blogmotor java implementációja.</description>
+   <name>ITM java version - main project</name>
+   <description>A simple blog implementation in Java.</description>
    <modules>
       <module>itm-common</module>
       <module>itm-web</module>

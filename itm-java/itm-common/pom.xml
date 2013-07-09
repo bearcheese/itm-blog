@@ -13,8 +13,8 @@
    <name>itm-common</name>
    <url>http://maven.apache.org</url>
    <properties>
-      <spring.version>3.1.0.RELEASE</spring.version>
-      <spring-security.version>3.1.0.RELEASE</spring-security.version>
+      <spring.version>3.2.3.RELEASE</spring.version>
+      <spring-security.version>3.2.0.M2</spring-security.version>
    </properties>
 
    <dependencies>
@@ -50,22 +50,7 @@
       </dependency>
       <dependency>
          <groupId>org.springframework</groupId>
-         <artifactId>spring-core</artifactId>
-         <version>${spring.version}</version>
-      </dependency>
-      <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-beans</artifactId>
-         <version>${spring.version}</version>
-      </dependency>
-      <dependency>
-         <groupId>org.springframework</groupId>
          <artifactId>spring-context</artifactId>
-         <version>${spring.version}</version>
-      </dependency>
-      <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-aop</artifactId>
          <version>${spring.version}</version>
       </dependency>
       <dependency>
@@ -143,4 +128,17 @@
          </resource>
       </resources>
    </build>
+   
+   <repositories>
+   <repository>
+	    <id>springsource-repo</id>
+	    <name>SpringSource Repository</name>
+	    <url>http://repo.springsource.org/release</url>
+	</repository>
+	<repository>
+	    <id>repository.springsource.milestone</id>
+	    <name>SpringSource Milestone Repository</name>
+	    <url>http://repo.springsource.org/milestone</url>
+	</repository>
+   </repositories>
 </project>
