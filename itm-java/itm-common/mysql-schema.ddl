@@ -1,15 +1,15 @@
 
     alter table comments 
         drop 
-        foreign key FKDC17DDF4DD3F8C86;
+        foreign key comments_user_id_fk;
 
     alter table comments 
         drop 
-        foreign key FKDC17DDF4C5F8FF26;
+        foreign key comments_post_id_fk;
 
     alter table posts 
         drop 
-        foreign key FK65E7BD33DF87EC6;
+        foreign key posts_author_fk;
 
     drop table if exists comments;
 
@@ -70,19 +70,19 @@
     ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
     alter table comments 
-        add index FKDC17DDF4DD3F8C86 (user_id), 
-        add constraint FKDC17DDF4DD3F8C86 
+        add index comments_user_id_fk (user_id), 
+        add constraint comments_user_id_fk 
         foreign key (user_id) 
         references users (id);
 
     alter table comments 
-        add index FKDC17DDF4C5F8FF26 (post_id), 
-        add constraint FKDC17DDF4C5F8FF26 
+        add index comments_post_id_fk (post_id), 
+        add constraint comments_post_id_fk 
         foreign key (post_id) 
         references posts (id);
 
     alter table posts 
-        add index FK65E7BD33DF87EC6 (author_id), 
-        add constraint FK65E7BD33DF87EC6 
+        add index posts_author_fk (author_id), 
+        add constraint posts_author_fk 
         foreign key (author_id) 
         references users (id);
