@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
          </div> <!-- Closing content div -->
             <div id="sidebar">
@@ -20,6 +21,7 @@
                 <li>
                   <p id="alert"></p>
                   <div id="login-box">
+                    <sec:authorize access="isAnonymous()">
                     <c:url value='/j_spring_security_check' var="login_url"/>
                     <form:form acceptCharset="UTF-8" id="login_user" commandName="user" action="${login_url}" method="POST">
 							  							
@@ -42,6 +44,10 @@
 							
 							  </fieldset>
 							</form:form>
+							</sec:authorize>
+							<sec:authorize access="isAuthenticated()">
+							Welcome back, <sec:authentication property="principal"/>!
+							</sec:authorize>
                   </div>
                 </li>
                 <li id="calendar">
@@ -73,6 +79,9 @@
     </div>
     <div id="footer">
       <p>Copyright (c) 2011 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+      <sec:authorize access="not isAnonymous()">
+        <p style="font-size: smaller">Current: <sec:authentication property="principal" /></p>
+      </sec:authorize>
       <a href="http://feedvalidator.org/check.cgi?url=http://snowqueen.herokuapp.com/feed/rss.xml">
         <img alt="[Valid RSS]" src="<c:url value="/assets/valid-rss-rogers.png"/>" title="Validate my RSS feed" />
       </a>

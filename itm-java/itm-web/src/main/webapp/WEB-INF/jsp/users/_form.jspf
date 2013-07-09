@@ -7,8 +7,6 @@
               
 
 <form:form acceptCharset="UTF-8" cssClass="new_user" id="new_user" commandName="user" action="/itm-web/users">
-<%--form accept-charset="UTF-8" action="/itm-web/users" class="new_user" id="new_user" method="post" --%>
-
 
 <fieldset class="register">
   <div class="field">
@@ -27,15 +25,14 @@
     <label for="user_password_confirmation">Jelszó újra</label>
 	<form:password path="passwordConfirmation" size="30" /><form:errors path="" />
   </div>
-    <div class="field">
+    <!--div class="field">
       <label for="user_admin">Admin</label>
       <form:checkbox path="admin"/>
-    </div>
+    </div-->
 
   <div class="actions">
     <input id="register-btn" name="commit" type="submit" value="Regisztráció" />
   </div>
   </fieldset>
-<%-- /form--%>
 </form:form>
 

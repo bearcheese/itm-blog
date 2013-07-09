@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
-   xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security.xsd">
+    
+	<http use-expressions="true">
+		<intercept-url pattern="/users/**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/**" access="permitAll" />
+		<form-login login-page="/login" default-target-url="/"
+			username-parameter="name" password-parameter="password" />
+		<logout />
+		<port-mappings>
+			<port-mapping http="8080" https="8443" />
+		</port-mappings>
+	</http>
 
-   <http>
-      <intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />      
-      <form-login login-page="/users/login"
-         default-target-url="/" username-parameter="name" password-parameter="password"/>
-      <logout />
-      <port-mappings>
-         <port-mapping http="8080" https="8443" />
-      </port-mappings>      
-   </http>
-   
-   <authentication-manager>
-      <authentication-provider ref="myAuthenticationService" />
-   </authentication-manager>
+	<authentication-manager>
+		<authentication-provider ref="myAuthenticationService" />
+	</authentication-manager>
 
-   <beans:bean id="myAuthenticationService" class="hu.bearmaster.itm.web.providers.UserAuthenticationProvider">
-      <beans:constructor-arg ref="userService"></beans:constructor-arg>
-   </beans:bean>
+	<beans:bean id="myAuthenticationService"
+		class="hu.bearmaster.itm.web.providers.UserAuthenticationProvider">
+		<beans:constructor-arg ref="userService"></beans:constructor-arg>
+	</beans:bean>
 
 </beans:beans>
