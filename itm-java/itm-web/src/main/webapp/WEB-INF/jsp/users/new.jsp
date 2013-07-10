@@ -5,12 +5,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<jsp:directive.include file="/WEB-INF/jsp/header.jspf" />
 
 <h1>Register user</h1>
 
 <jsp:directive.include file="_form.jspf" />
 
 <a href="/users">Back</a>
-
-<jsp:directive.include file="/WEB-INF/jsp/footer.jspf" />

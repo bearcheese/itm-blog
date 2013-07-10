@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<jsp:directive.include file="/WEB-INF/jsp/header.jspf" />
 	<h1>Felhasználók</h1>
 
 	<table>
@@ -35,5 +34,3 @@
 	<a href="/itm-web/users/new">Új felhasználó</a>
 
 
-
-<jsp:directive.include file="/WEB-INF/jsp/footer.jspf" />
