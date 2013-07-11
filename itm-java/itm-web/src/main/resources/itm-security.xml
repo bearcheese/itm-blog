@@ -7,11 +7,12 @@
            http://www.springframework.org/schema/security/spring-security.xsd">
     
 	<http use-expressions="true">
-		<intercept-url pattern="/users/**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/users/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/**" access="permitAll" />
 		<form-login login-page="/login" default-target-url="/"
 			username-parameter="name" password-parameter="password" />
-		<logout />
+		<logout logout-url="/logout" logout-success-url="/"/>
 		<port-mappings>
 			<port-mapping http="8080" https="8443" />
 		</port-mappings>

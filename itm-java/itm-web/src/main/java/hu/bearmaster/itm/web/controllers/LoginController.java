@@ -43,7 +43,7 @@ public class LoginController {
     @RequestMapping(method = RequestMethod.GET, value = "/register")
     public String newUser(final Model model) {
         model.addAttribute("user", new UserVO());
-        return "users/new";
+        return "users/register";
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")
@@ -52,7 +52,7 @@ public class LoginController {
         if (result.hasErrors()) {
             LOGGER.info("Binding errors in user object");
             LOGGER.info("Binding results: {}", result);
-            return "users/new";
+            return "users/register";
         }
         try {
             LOGGER.info("User trying to register: {}", user);

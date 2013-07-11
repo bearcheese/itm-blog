@@ -35,29 +35,29 @@
 							<label for="user_name"><spring:message
 									code="sidebar.login.name" />:</label>
 							<form:input id="user_name" path="name" size="30" />
-							<form:errors path="name" />
 						</div>
 
 						<div>
 							<label for="user_password"><spring:message
 									code="sidebar.login.password" />:</label>
 							<form:password id="user_password" path="password" size="30" />
-							<form:errors path="password" />
 						</div>
 
 						<div class="actions">
-                            <spring:message code="sidebar.login.button" var="login_button"/>
-							<input id="login-btn" name="commit" type="submit" value="${login_button}" />
-							<spring:message code="sidebar.login.or"/> <a href="<c:url value='/register'/>"><spring:message code="sidebar.login.register"/></a>!
+							<spring:message code="sidebar.login.button" var="login_button" />
+							<input id="login-btn" name="commit" type="submit"
+								value="${login_button}" />
+							<spring:message code="sidebar.login.or" />
+							<a href="<c:url value='/register'/>"><spring:message
+									code="sidebar.login.register" /></a>!
 						</div>
 
 					</fieldset>
 				</form:form>
 			</sec:authorize>
 			<sec:authorize access="isAuthenticated()">
-                            Welcome back, <sec:authentication
-					property="principal" />!
-                            </sec:authorize>
+				<jsp:directive.include file="/WEB-INF/fragments/userinfo.jspf" />
+			</sec:authorize>
 		</div>
 	</li>
 	<li id="calendar"></li>

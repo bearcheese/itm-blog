@@ -1,8 +1,9 @@
 package hu.bearmaster.itm.common.model;
 
+import hu.bearmaster.itm.common.validators.PasswordComplexity;
 import hu.bearmaster.itm.common.validators.PasswordMatches;
 
-import javax.validation.constraints.Pattern;
+//import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -27,7 +28,8 @@ public class UserVO extends GenericVO<Long> {
    private String email;
       
    @NotBlank
-   @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=[^\\s]+$).{5,}$") //Source http://stackoverflow.com/questions/3802192/regexp-java-for-password-validation
+   //@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=[^\\s]+$).{5,}$") //Source http://stackoverflow.com/questions/3802192/regexp-java-for-password-validation
+   @PasswordComplexity
    private String password;
    
    private String passwordConfirmation;

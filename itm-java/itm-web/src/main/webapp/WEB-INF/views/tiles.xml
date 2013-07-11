@@ -7,5 +7,15 @@
         <put-attribute name="title" value="Index" />
         <put-attribute name="content" value="/WEB-INF/views/index.jsp" />
     </definition>
+    
+    <!-- definition extends="default" name="admin/index">
+        <put-attribute name="title" value="Admin" />
+        <put-attribute name="content" value="/WEB-INF/views/admin/index.jsp" />
+    </definition-->
+    
+    <definition extends="default" name="*/*">
+        <put-attribute name="title" value="{2}" />
+        <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
 
 </tiles-definitions>

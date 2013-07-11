@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
    private UserDao userDao;
    
    public UserServiceImpl() {
-      this.passwordEncoder = new StandardPasswordEncoder(DEFAULT_SECRET); 
+      this(DEFAULT_SECRET); 
    }
    
    public UserServiceImpl(final String secret) {

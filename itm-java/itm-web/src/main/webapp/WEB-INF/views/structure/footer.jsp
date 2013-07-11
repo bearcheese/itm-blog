@@ -18,7 +18,7 @@
 <a
 	href="http://feedvalidator.org/check.cgi?url=http://snowqueen.herokuapp.com/feed/rss.xml">
 	<img alt="[Valid RSS]"
-	src="<c:url value="/assets/valid-rss-rogers.png"/>"
+	src="<c:url value="assets/images/valid-rss-rogers.png"/>"
 	title="Validate my RSS feed" />
 </a>
 <a href="http://jigsaw.w3.org/css-validator/check/referer"> <img

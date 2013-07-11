@@ -53,6 +53,10 @@
 	<bean id="userController" class="hu.bearmaster.itm.web.controllers.UserController">
 		<property name="userService" ref="userService" />
 	</bean>
+	
+	<bean id="loginController" class="hu.bearmaster.itm.web.controllers.LoginController">
+        <property name="userService" ref="userService" />
+    </bean>
 
 	<mvc:resources location="/css/" mapping="/assets/css/**" />
 	<mvc:resources location="/images/" mapping="/assets/images/**" />
