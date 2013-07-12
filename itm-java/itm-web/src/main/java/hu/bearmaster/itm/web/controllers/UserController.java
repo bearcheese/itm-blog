@@ -31,4 +31,10 @@ public class UserController {
         model.addAttribute("user", new UserVO());
         return "users/index";
     }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/new")
+    public String newUser(final Model model) {
+        model.addAttribute("user", new UserVO());
+        return "users/new";
+    }
 }
